@@ -82,7 +82,7 @@ const EntranceScreen: React.FC<EntranceScreenProps> = ({ onEnter }) => {
               Sacred Union
             </h1>
             <p className="text-lg md:text-xl text-gray-700 font-medium">
-              A Blessed Celebration in Christ
+              <span className="italic text-amber-200 font-semibold">A Blessed Celebration in Christ</span>
             </p>
           </div>
 

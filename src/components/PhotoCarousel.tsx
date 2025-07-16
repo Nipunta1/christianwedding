@@ -39,7 +39,7 @@ const PhotoCarousel: React.FC = () => {
       <div className="relative z-10">
         <div className="flex items-center justify-center mb-8">
           <Heart className="w-6 h-6 text-pink-600 mr-3" fill="currentColor" />
-          <h3 className="text-2xl font-serif text-gray-800">Our Precious Memories</h3>
+          <h3 className="text-2xl font-serif text-gray-800 gradient-text animate-text-glow animate-heartbeat">Our Precious Memories</h3>
         </div>
         
         <div className="relative">
@@ -53,7 +53,7 @@ const PhotoCarousel: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
             <div className="absolute bottom-6 left-6 right-6">
               <p className="text-white font-medium text-xl drop-shadow-lg">
-                {photos[currentPhoto].caption}
+                <span className="animate-fadeInScale font-semibold">{photos[currentPhoto].caption}</span>
               </p>
             </div>
           </div>

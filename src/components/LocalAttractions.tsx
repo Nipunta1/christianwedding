@@ -74,14 +74,14 @@ const LocalAttractions: React.FC = () => {
       <div className="relative z-10">
         <div className="flex items-center justify-center mb-8">
           <MapPin className="w-6 h-6 text-violet-600 mr-3 animate-wiggle" />
-          <h3 className="text-2xl font-serif text-gray-800 gradient-text animate-blur-unblur group-hover:text-violet-900 transition-colors duration-300" style={{ animationDelay: '1.1s' }}>Local Attractions</h3>
+          <h3 className="text-2xl font-serif text-gray-800 gradient-text animate-blur-unblur animate-float group-hover:text-violet-900 transition-colors duration-300" style={{ animationDelay: '1.1s' }}>Local Attractions</h3>
         </div>
         
         <div className="grid md:grid-cols-2 gap-6">
           {attractions.map((attraction, index) => (
             <div 
               key={attraction.id} 
-              className="relative overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 animate-fadeInScale"
+              className="relative overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 animate-fadeInScale animate-glow"
               style={{ animationDelay: `${1.3 + index * 0.2}s` }}
             >
               <div className="relative h-48">
@@ -101,9 +101,6 @@ const LocalAttractions: React.FC = () => {
                   <h4 className="text-white font-semibold text-lg mb-1 drop-shadow-lg">
                     {attraction.name}
                   </h4>
-                  <p className="text-white/90 text-sm mb-2 drop-shadow-lg">
-                    {attraction.description}
-                  </p>
                   <p className="text-amber-200 text-xs drop-shadow-lg">
                     {attraction.distance}
                   </p>

@@ -207,7 +207,7 @@ const WishesSection: React.FC = () => {
         {/* Current Wish Display with Navigation */}
         {wishes.length > 0 && (
           <div className="mb-6">
-            <div className="relative overflow-hidden rounded-xl p-6 border-2 border-teal-200 animate-slideInRight">
+            <div className="relative overflow-hidden rounded-xl p-6 border-2 border-teal-200 animate-slideInRight animate-glow">
               <div className="absolute inset-0 bg-gradient-to-r from-teal-50/90 to-cyan-50/90 backdrop-blur-sm"></div>
               
               {/* Navigation Buttons */}
