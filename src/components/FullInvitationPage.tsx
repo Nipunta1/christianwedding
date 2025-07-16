@@ -287,9 +287,9 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
                   <h3 className="text-2xl font-serif text-gray-800 gradient-text animate-blur-unblur group-hover:text-amber-900 transition-colors duration-300" style={{ animationDelay: '0.8s' }}>Travel Information</h3>
                 </div>
                 <div className="space-y-3 text-gray-700 text-sm">
-                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300 font-medium" style={{ animationDelay: '1s' }}><strong className="text-amber-700">Airport:</strong> City International (15 mins)</p>
-                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300 font-medium" style={{ animationDelay: '1.2s' }}><strong className="text-amber-700">Train:</strong> Central Station (10 mins)</p>
-                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300 font-medium" style={{ animationDelay: '1.4s' }}><strong className="text-amber-700">Parking:</strong> Complimentary valet available</p>
+                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300 font-medium" style={{ animationDelay: '1s' }}><strong className="text-amber-700">Airport:</strong> <span className="italic">City International (15 mins)</span></p>
+                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300 font-medium" style={{ animationDelay: '1.2s' }}><strong className="text-amber-700">Train:</strong> <span className="italic">Central Station (10 mins)</span></p>
+                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300 font-medium" style={{ animationDelay: '1.4s' }}><strong className="text-amber-700">Parking:</strong> <span className="italic">Complimentary valet available</span></p>
                 </div>
               </div>
             </div>
@@ -365,7 +365,7 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
             <div className="absolute inset-0 shimmer-background opacity-0 group-hover:opacity-100 group-hover:animate-shimmer-active transition-opacity duration-300"></div>
             
             <div className="relative z-10 text-center">
-              <h3 className="text-2xl font-serif text-gray-800 mb-6 gradient-text animate-bounce-text animate-text-glow group-hover:text-slate-900 transition-colors duration-300" style={{ animationDelay: '1.4s' }}>Contact Information</h3>
+              <h3 className="text-2xl font-serif mb-6 animate-colorChange animate-bounce-text" style={{ animationDelay: '1.4s' }}>Contact Information</h3>
               <div className="space-y-3 text-gray-700">
                 <div className="flex items-center justify-center animate-slideInLeft group-hover:text-slate-800 transition-colors duration-300" style={{ animationDelay: '1.6s' }}>
                   <Mail className="w-5 h-5 mr-3 text-gray-600" />
@@ -375,7 +375,7 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
                   <Phone className="w-5 h-5 mr-3 text-gray-600" />
                   <span className="font-medium">RSVP by May 15th: <a href="tel:+15551234567" className="text-amber-700 hover:text-amber-800 underline transition-colors duration-200">(555) 123-4567</a></span>
                 </div>
-                <p className="text-sm text-gray-600 italic mt-4 animate-fadeInUp animate-wiggle group-hover:text-slate-700 transition-colors duration-300" style={{ animationDelay: '2s' }}>
+                <p className="text-sm mt-4 font-cursive italic" style={{ color: '#8B4513', animationDelay: '2s' }}>
                   We look forward to celebrating this blessed day with you in Christ's love.
                 </p>
               </div>

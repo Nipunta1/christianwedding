@@ -8,6 +8,10 @@
   body {
     font-family: 'Playfair Display', serif;
   }
+  
+  .font-cursive {
+    font-family: 'Dancing Script', cursive;
+  }
 }
 
 @layer utilities {
@@ -428,6 +432,26 @@
 
   .animate-buttonPulse {
     animation: buttonPulse 2s infinite;
+  }
+
+  /* Color Change Animation for Headings */
+  @keyframes colorChange {
+    0%, 100% {
+      color: #374151; /* gray-700 */
+    }
+    25% {
+      color: #f59e0b; /* amber-500 */
+    }
+    50% {
+      color: #8b5cf6; /* violet-500 */
+    }
+    75% {
+      color: #10b981; /* emerald-500 */
+    }
+  }
+
+  .animate-colorChange {
+    animation: colorChange 4s ease-in-out infinite;
   }
 
   /* Gradient Shift Animation for Cards */
