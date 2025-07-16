@@ -90,7 +90,7 @@ const WishesSection: React.FC = () => {
         {/* Static Header */}
         <div className="flex items-center justify-center mb-6">
           <MessageCircle className="w-6 h-6 text-teal-600 mr-3 animate-heartbeat" />
-          <h3 className="text-2xl luxury-display text-gray-800 gradient-text animate-bounce-text group-hover:text-teal-900 transition-colors duration-300" style={{ animationDelay: '1.3s' }}>Your Blessed Wishes</h3>
+          <h3 className="text-2xl font-serif text-gray-800 gradient-text animate-bounce-text group-hover:text-teal-900 transition-colors duration-300" style={{ animationDelay: '1.3s' }}>Your Blessed Wishes</h3>
         </div>
 
         {/* Add Wish Button */}
@@ -98,7 +98,7 @@ const WishesSection: React.FC = () => {
           <div className="text-center mb-6">
             <button
               onClick={() => setShowForm(true)}
-              className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg animate-bounceIn luxury-serif" style={{ animationDelay: '1.5s' }}
+              className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg animate-bounceIn" style={{ animationDelay: '1.5s' }}
             >
               Share Your Blessing
             </button>
@@ -146,10 +146,10 @@ const WishesSection: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
-                      className="flex items-center space-x-3 bg-white border-2 border-teal-200 rounded-lg px-6 py-3 hover:border-teal-400 transition-all duration-200 shadow-sm hover:shadow-md w-full sm:w-auto luxury-text"
+                      className="flex items-center space-x-3 bg-white border-2 border-teal-200 rounded-lg px-6 py-3 hover:border-teal-400 transition-all duration-200 shadow-sm hover:shadow-md w-full sm:w-auto"
                     >
                       <Camera className="w-5 h-5 text-teal-600" />
-                      <span className="text-gray-700 font-semibold">Add Photo</span>
+                      <span className="text-gray-700 font-medium">Add Photo</span>
                     </button>
                     <p className="text-xs text-gray-500 mt-2">JPG or PNG, max 5MB</p>
                   </div>
@@ -157,7 +157,7 @@ const WishesSection: React.FC = () => {
 
                 {/* Message Input */}
                 <div>
-                  <label htmlFor="wishMessage" className="block text-base font-semibold text-gray-700 mb-3 luxury-text">
+                  <label htmlFor="wishMessage" className="block text-sm font-medium text-gray-700 mb-3">
                     Your Blessing
                   </label>
                   <textarea
@@ -165,7 +165,7 @@ const WishesSection: React.FC = () => {
                     value={newWish}
                     onChange={(e) => setNewWish(e.target.value)}
                     placeholder="Share your heartfelt wishes for the blessed couple..."
-                    className="w-full p-4 border-2 border-teal-200 rounded-lg focus:border-teal-400 focus:outline-none resize-none h-32 transition-all duration-200 shadow-sm focus:shadow-md text-base luxury-text"
+                    className="w-full p-4 border-2 border-teal-200 rounded-lg focus:border-teal-400 focus:outline-none resize-none h-32 font-light transition-all duration-200 shadow-sm focus:shadow-md text-base"
                     maxLength={200}
                     required
                   />
@@ -179,7 +179,7 @@ const WishesSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={!newWish.trim()}
-                    className="flex-1 bg-teal-600 hover:bg-teal-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-4 px-6 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none text-lg luxury-text"
+                    className="flex-1 bg-teal-600 hover:bg-teal-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-4 px-6 rounded-lg font-medium transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none text-lg"
                   >
                     <Send className="w-5 h-5" />
                     <span>Share Blessing</span>
@@ -194,7 +194,7 @@ const WishesSection: React.FC = () => {
                         fileInputRef.current.value = '';
                       }
                     }}
-                    className="px-8 py-4 border-2 border-teal-200 text-teal-700 rounded-lg hover:border-teal-400 hover:bg-teal-50 transition-all duration-200 font-semibold text-lg luxury-text"
+                    className="px-8 py-4 border-2 border-teal-200 text-teal-700 rounded-lg hover:border-teal-400 hover:bg-teal-50 transition-all duration-200 font-medium text-lg"
                   >
                     Cancel
                   </button>
@@ -207,7 +207,7 @@ const WishesSection: React.FC = () => {
         {/* Current Wish Display with Navigation */}
         {wishes.length > 0 && (
           <div className="mb-6">
-            <div className="relative overflow-hidden rounded-xl p-6 border-2 border-teal-200 animate-slideInRight animate-glow">
+            <div className="relative overflow-hidden rounded-xl p-6 border-2 border-teal-200 animate-slideInRight">
               <div className="absolute inset-0 bg-gradient-to-r from-teal-50/90 to-cyan-50/90 backdrop-blur-sm"></div>
               
               {/* Navigation Buttons */}
@@ -239,8 +239,8 @@ const WishesSection: React.FC = () => {
                     />
                   </div>
                   <div className="flex-grow">
-                    <h4 className="font-bold text-gray-800 mb-3 text-xl luxury-heading animate-fadeInScale">{wishes[currentWishIndex].name}</h4>
-                    <p className="text-gray-700 italic leading-relaxed text-lg luxury-text animate-slideInUp" style={{ animationDelay: '0.2s' }}>
+                    <h4 className="font-semibold text-gray-800 mb-3 text-xl">{wishes[currentWishIndex].name}</h4>
+                    <p className="text-gray-700 italic leading-relaxed text-lg">
                       "{wishes[currentWishIndex].message}"
                     </p>
                   </div>
@@ -251,7 +251,7 @@ const WishesSection: React.FC = () => {
         )}
 
         <div className="text-center">
-          <p className="text-base text-gray-600 luxury-text animate-fadeInUp">
+          <p className="text-sm text-gray-600">
             {wishes.length} heartfelt {wishes.length === 1 ? 'blessing' : 'blessings'} shared
             {wishes.length > 1 && (
               <span className="ml-2 text-teal-600">

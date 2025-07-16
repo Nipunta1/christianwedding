@@ -81,10 +81,8 @@ const EntranceScreen: React.FC<EntranceScreenProps> = ({ onEnter }) => {
             <h1 className="text-4xl md:text-6xl font-serif mb-4 font-bold gradient-text animate-text-glow">
               Sacred Union
             </h1>
-            <p className="text-lg md:text-xl text-amber-300 font-medium italic luxury-text animate-fadeInScale" style={{ animationDelay: '1.5s' }}>
-              <span className="italic text-amber-200 luxury-serif animate-slideInUp" style={{ animationDelay: '1.8s' }}>
-                A Blessed Celebration in Christ
-              </span>
+            <p className="text-lg md:text-xl text-gray-700 font-medium">
+              A Blessed Celebration in Christ
             </p>
           </div>
 

@@ -34,7 +34,6 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
   const [isAtBottom, setIsAtBottom] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [thankYouCardRef, setThankYouCardRef] = useState<HTMLElement | null>(null);
-  const [celebrationEffect, setCelebrationEffect] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
@@ -67,13 +66,7 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
   };
 
   const handleAcceptInvitation = () => {
-    setCelebrationEffect(true);
     setIsAccepted(true);
-    
-    // Remove celebration effect after animation
-    setTimeout(() => {
-      setCelebrationEffect(false);
-    }, 800);
     
     // Wait a moment for the card to render, then trigger confetti
     setTimeout(() => {
@@ -178,13 +171,11 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
               </div>
             </div>
             
-            <h1 className="text-4xl md:text-5xl luxury-heading text-white mb-4 drop-shadow-2xl gradient-text animate-blur-unblur">
-              <span className="luxury-display animate-zoomIn">Celebrating a Blessed Union in Christ</span>
+            <h1 className="text-4xl md:text-5xl font-serif text-white mb-4 drop-shadow-2xl gradient-text animate-blur-unblur">
+              Celebrating a Blessed Union in Christ
             </h1>
-            <p className="text-xl text-amber-200 font-semibold drop-shadow-lg luxury-serif animate-fadeInScale animate-luxury-text-glow" style={{ animationDelay: '2.5s' }}>
-              <span className="animate-slideInLeft" style={{ animationDelay: '2.7s' }}>Sarah Elizabeth</span>
-              <span className="mx-4 animate-zoomIn" style={{ animationDelay: '2.9s' }}>&</span>
-              <span className="animate-slideInRight" style={{ animationDelay: '3.1s' }}>Michael James</span>
+            <p className="text-xl text-amber-200 font-light drop-shadow-lg animate-fadeInScale" style={{ animationDelay: '2.5s' }}>
+              Sarah Elizabeth & Michael James
             </p>
           </div>
 
@@ -202,17 +193,23 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
               <div className="relative z-10">
                 <div className="flex items-center mb-6">
                   <Church className="w-8 h-8 text-blue-700 mr-3 animate-wiggle" />
-                  <div className="flex items-center animate-slideInLeft group-hover:text-blue-800 transition-colors duration-300" style={{ animationDelay: '0.4s' }}>
+                  <h3 className="text-2xl font-serif text-gray-800 gradient-text animate-bounce-text group-hover:text-blue-900 transition-colors duration-300" style={{ animationDelay: '0.3s' }}>Sacred Ceremony</h3>
+                </div>
+                <div className="space-y-4 text-gray-700">
+                  <div className="flex items-center animate-slideInLeft group-hover:text-blue-800 transition-colors duration-300" style={{ animationDelay: '0.5s' }}>
                     <MapPin className="w-5 h-5 mr-3 text-blue-600" />
-                    <span className="font-semibold text-lg luxury-serif">St. Mary's Cathedral</span>
+                    <span className="font-medium">St. Mary's Cathedral</span>
                   </div>
-                  <div className="flex items-center animate-slideInLeft group-hover:text-blue-800 transition-colors duration-300" style={{ animationDelay: '0.6s' }}>
+                  <div className="flex items-center animate-slideInLeft group-hover:text-blue-800 transition-colors duration-300" style={{ animationDelay: '0.7s' }}>
                     <Clock className="w-5 h-5 mr-3 text-blue-600" />
-                    <span className="text-lg luxury-serif">11:00 AM</span>
+                    <span>11:00 AM</span>
                   </div>
+                  <p className="text-sm text-gray-600 italic mt-4 leading-relaxed animate-fadeInUp group-hover:text-blue-700 transition-colors duration-300" style={{ animationDelay: '0.9s' }}>
+                    "A sacred moment where two hearts become one in God's presence"
+                  </p>
                   <button
                     onClick={() => openDirections('St. Mary\'s Cathedral, 123 Faith Street, Downtown')}
-                    className="mt-4 flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl animate-slideInFromBottom luxury-serif" style={{ animationDelay: '0.8s' }}
+                    className="mt-4 flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl animate-slideInFromBottom" style={{ animationDelay: '1.1s' }}
                   >
                     <Navigation className="w-4 h-4" />
                     <span>View Location</span>
@@ -233,17 +230,23 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
               <div className="relative z-10">
                 <div className="flex items-center mb-6">
                   <Heart className="w-8 h-8 text-rose-700 mr-3 animate-heartbeat" fill="currentColor" />
-                  <div className="flex items-center animate-slideInRight group-hover:text-rose-800 transition-colors duration-300" style={{ animationDelay: '0.6s' }}>
+                  <h3 className="text-2xl font-serif text-gray-800 gradient-text animate-blur-unblur group-hover:text-rose-900 transition-colors duration-300" style={{ animationDelay: '0.5s' }}>Joyful Reception</h3>
+                </div>
+                <div className="space-y-4 text-gray-700">
+                  <div className="flex items-center animate-slideInRight group-hover:text-rose-800 transition-colors duration-300" style={{ animationDelay: '0.7s' }}>
                     <MapPin className="w-5 h-5 mr-3 text-rose-600" />
-                    <span className="font-semibold text-lg luxury-serif">Grand Ballroom, Heritage Hotel</span>
+                    <span className="font-medium">Grand Ballroom, Heritage Hotel</span>
                   </div>
-                  <div className="flex items-center animate-slideInRight group-hover:text-rose-800 transition-colors duration-300" style={{ animationDelay: '0.8s' }}>
+                  <div className="flex items-center animate-slideInRight group-hover:text-rose-800 transition-colors duration-300" style={{ animationDelay: '0.9s' }}>
                     <Clock className="w-5 h-5 mr-3 text-rose-600" />
-                    <span className="text-lg luxury-serif">6:00 PM - 11:00 PM</span>
+                    <span>6:00 PM - 11:00 PM</span>
                   </div>
+                  <p className="text-sm text-gray-600 italic mt-4 leading-relaxed animate-fadeInUp group-hover:text-rose-700 transition-colors duration-300" style={{ animationDelay: '1.1s' }}>
+                    "Join us for dinner, dancing, and joyful celebration"
+                  </p>
                   <button
                     onClick={() => openDirections('Grand Ballroom, Heritage Hotel, 456 Celebration Ave, Uptown')}
-                    className="mt-4 flex items-center space-x-2 bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-700 hover:to-rose-800 text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl animate-slideInFromBottom luxury-serif" style={{ animationDelay: '1.0s' }}
+                    className="mt-4 flex items-center space-x-2 bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-700 hover:to-rose-800 text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl animate-slideInFromBottom" style={{ animationDelay: '1.3s' }}
                   >
                     <Navigation className="w-4 h-4" />
                     <span>View Location</span>
@@ -264,11 +267,11 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
               <div className="relative z-10">
                 <div className="flex items-center mb-6">
                   <Shirt className="w-8 h-8 text-emerald-700 mr-3 animate-float" />
-                  <h3 className="text-2xl luxury-heading text-gray-800 gradient-text animate-bounce-text group-hover:text-emerald-900 transition-colors duration-300" style={{ animationDelay: '0.6s' }}>Elegant Attire</h3>
+                  <h3 className="text-2xl font-serif text-gray-800 gradient-text animate-bounce-text group-hover:text-emerald-900 transition-colors duration-300" style={{ animationDelay: '0.6s' }}>Elegant Attire</h3>
                 </div>
-                <div className="text-gray-700 luxury-text">
-                  <p className="font-semibold text-xl mb-3 animate-slideInLeft group-hover:text-emerald-800 transition-colors duration-300" style={{ animationDelay: '0.8s' }}>Formal Attire</p>
-                  <p className="text-base text-gray-600 leading-relaxed italic animate-fadeInUp group-hover:text-emerald-700 transition-colors duration-300" style={{ animationDelay: '1s' }}>
+                <div className="text-gray-700">
+                  <p className="font-medium text-lg mb-2 animate-slideInLeft group-hover:text-emerald-800 transition-colors duration-300" style={{ animationDelay: '0.8s' }}>Formal Attire</p>
+                  <p className="text-sm text-gray-600 leading-relaxed animate-fadeInUp group-hover:text-emerald-700 transition-colors duration-300" style={{ animationDelay: '1s' }}>
                     Modest & respectful dress appreciated in this sacred celebration
                   </p>
                 </div>
@@ -287,12 +290,12 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
               <div className="relative z-10">
                 <div className="flex items-center mb-6">
                   <Plane className="w-8 h-8 text-amber-700 mr-3 animate-float" />
-                  <h3 className="text-2xl luxury-display text-gray-800 gradient-text animate-blur-unblur group-hover:text-amber-900 transition-colors duration-300" style={{ animationDelay: '0.8s' }}>Travel Information</h3>
+                  <h3 className="text-2xl font-serif text-gray-800 gradient-text animate-blur-unblur group-hover:text-amber-900 transition-colors duration-300" style={{ animationDelay: '0.8s' }}>Travel Information</h3>
                 </div>
-                <div className="space-y-3 text-gray-700 text-base luxury-text">
-                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300 luxury-serif" style={{ animationDelay: '1s' }}><strong className="font-semibold">Airport:</strong> City International (15 mins)</p>
-                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300 luxury-serif" style={{ animationDelay: '1.2s' }}><strong className="font-semibold">Train:</strong> Central Station (10 mins)</p>
-                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300 luxury-serif" style={{ animationDelay: '1.4s' }}><strong className="font-semibold">Parking:</strong> Complimentary valet available</p>
+                <div className="space-y-3 text-gray-700 text-sm">
+                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300" style={{ animationDelay: '1s' }}><strong>Airport:</strong> City International (15 mins)</p>
+                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300" style={{ animationDelay: '1.2s' }}><strong>Train:</strong> Central Station (10 mins)</p>
+                  <p className="animate-slideInLeft group-hover:text-amber-800 transition-colors duration-300" style={{ animationDelay: '1.4s' }}><strong>Parking:</strong> Complimentary valet available</p>
                 </div>
               </div>
             </div>
@@ -308,11 +311,11 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
             
             <div className="text-center relative z-10">
               <Cross className="w-12 h-12 mx-auto mb-6 text-amber-700 animate-wiggle" />
-              <h3 className="text-2xl luxury-display text-gray-800 mb-4 gradient-text animate-bounce-text group-hover:text-amber-900 transition-colors duration-300" style={{ animationDelay: '1s' }}>Sacred Promise</h3>
-              <blockquote className="text-xl md:text-2xl luxury-serif text-gray-800 italic leading-relaxed mb-6 animate-blur-unblur group-hover:text-amber-800 transition-colors duration-300" style={{ animationDelay: '1.2s' }}>
+              <h3 className="text-2xl font-serif text-gray-800 mb-4 gradient-text animate-bounce-text group-hover:text-amber-900 transition-colors duration-300" style={{ animationDelay: '1s' }}>Sacred Promise</h3>
+              <blockquote className="text-xl md:text-2xl font-serif text-gray-800 italic leading-relaxed mb-6 animate-blur-unblur group-hover:text-amber-800 transition-colors duration-300" style={{ animationDelay: '1.2s' }}>
                 "Therefore what God has joined together, let no one separate."
               </blockquote>
-              <cite className="text-amber-700 font-semibold text-lg luxury-serif animate-fadeInScale group-hover:text-amber-900 transition-colors duration-300" style={{ animationDelay: '3.5s' }}>— Mark 10:9</cite>
+              <cite className="text-amber-700 font-medium text-lg animate-fadeInScale group-hover:text-amber-900 transition-colors duration-300" style={{ animationDelay: '3.5s' }}>— Mark 10:9</cite>
             </div>
           </div>
 
@@ -330,12 +333,12 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
             <div className="text-center animate-smoothReveal" style={{ animationDelay: '1s' }}>
               <button
                 onClick={handleAcceptInvitation}
-                className={`bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-16 py-6 rounded-full text-2xl font-bold transition-all duration-500 shadow-xl hover:shadow-2xl transform hover:scale-105 relative overflow-hidden group luxury-display ${celebrationEffect ? 'animate-celebration-burst' : ''}`}
+                className="bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-6 py-2 rounded-full text-base font-medium transition-all duration-500 shadow-xl hover:shadow-2xl transform hover:scale-105 relative overflow-hidden group"
               >
-                <span className="relative z-10 flex items-center space-x-3">
-                  <Check className="w-6 h-6" />
+                <span className="relative z-10 flex items-center space-x-2">
+                  <Check className="w-4 h-4" />
                   <span>Accept Invitation</span>
-                  <Check className="w-6 h-6" />
+                  <Check className="w-4 h-4" />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-all duration-1000"></div>
               </button>
@@ -343,7 +346,7 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
           ) : (
             <div 
               data-thank-you-card
-              className="relative overflow-hidden rounded-2xl p-8 text-center shadow-2xl border-2 animate-smoothReveal animate-luxury-glow" 
+              className="relative overflow-hidden rounded-2xl p-8 text-center shadow-2xl border-2 animate-smoothReveal" 
               style={{ borderColor: '#8B4513' }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-amber-50/95 via-orange-50/95 to-yellow-50/95 backdrop-blur-sm"></div>
@@ -351,8 +354,8 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
               
               <div className="relative z-10">
                 <Check className="w-12 h-12 mx-auto mb-4 animate-heartbeat" style={{ color: '#8B4513' }} />
-                <h3 className="text-3xl luxury-display mb-4 animate-luxury-text-glow" style={{ color: '#8B4513' }}>Thank You, Dear Guest!</h3>
-                <p className="text-xl leading-relaxed luxury-serif animate-fadeInScale" style={{ color: '#8B4513', animationDelay: '0.3s' }}>
+                <h3 className="text-2xl font-serif mb-3" style={{ color: '#8B4513' }}>Thank You, Dear Guest!</h3>
+                <p className="text-lg leading-relaxed" style={{ color: '#8B4513' }}>
                   Your presence will make our special day even more blessed.
                 </p>
               </div>
@@ -368,19 +371,17 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
             <div className="absolute inset-0 shimmer-background opacity-0 group-hover:opacity-100 group-hover:animate-shimmer-active transition-opacity duration-300"></div>
             
             <div className="relative z-10 text-center">
-              <h3 className="text-2xl luxury-display text-gray-800 mb-6 gradient-text animate-luxury-text-glow group-hover:text-slate-900 transition-colors duration-300" style={{ animationDelay: '1.4s' }}>Contact Information</h3>
-              <div className="space-y-4 text-gray-700 luxury-text">
+              <h3 className="text-2xl font-serif text-gray-800 mb-6 gradient-text animate-bounce-text group-hover:text-slate-900 transition-colors duration-300" style={{ animationDelay: '1.4s' }}>Contact Information</h3>
+              <div className="space-y-3 text-gray-700">
                 <div className="flex items-center justify-center animate-slideInLeft group-hover:text-slate-800 transition-colors duration-300" style={{ animationDelay: '1.6s' }}>
                   <Mail className="w-5 h-5 mr-3 text-gray-600" />
-                  <span className="text-lg luxury-serif">For questions: </span>
-                  <a href="mailto:sarahandmichael@wedding.com" className="luxury-link text-lg font-medium ml-1 luxury-serif hover:animate-pulse">sarahandmichael@wedding.com</a>
+                  <span>For questions: sarahandmichael@wedding.com</span>
                 </div>
                 <div className="flex items-center justify-center animate-slideInRight group-hover:text-slate-800 transition-colors duration-300" style={{ animationDelay: '1.8s' }}>
                   <Phone className="w-5 h-5 mr-3 text-gray-600" />
-                  <span className="text-lg luxury-serif">RSVP by May 15th: </span>
-                  <a href="tel:+15551234567" className="luxury-link text-lg font-medium ml-1 luxury-serif hover:animate-pulse">(555) 123-4567</a>
+                  <span>RSVP by May 15th: (555) 123-4567</span>
                 </div>
-                <p className="text-base text-gray-600 italic mt-6 animate-fadeInUp group-hover:text-slate-700 transition-colors duration-300 leading-relaxed luxury-serif" style={{ animationDelay: '2s' }}>
+                <p className="text-sm text-gray-600 italic mt-4 animate-fadeInUp group-hover:text-slate-700 transition-colors duration-300" style={{ animationDelay: '2s' }}>
                   We look forward to celebrating this blessed day with you in Christ's love.
                 </p>
               </div>
@@ -389,10 +390,10 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
 
           {/* Enhanced Footer */}
           <div className="text-center py-10 animate-fadeInUp" style={{ animationDelay: '1.4s' }}>
-            <p className="text-white/90 text-xl italic drop-shadow-lg leading-relaxed luxury-serif animate-luxury-text-glow">
+            <p className="text-white/90 text-lg italic drop-shadow-lg leading-relaxed">
               "Love bears all things, believes all things, hopes all things, endures all things."
             </p>
-            <p className="text-amber-200 text-base mt-4 drop-shadow-lg luxury-serif font-medium animate-fadeInScale" style={{ animationDelay: '1.6s' }}>— 1 Corinthians 13:7</p>
+            <p className="text-amber-200 text-sm mt-3 drop-shadow-lg">— 1 Corinthians 13:7</p>
           </div>
         </div>
       </div>
