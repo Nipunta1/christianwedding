@@ -109,34 +109,39 @@
   }
   
   /* Luxury Confetti Animation */
-  @keyframes confetti-fall-enhanced {
+  @keyframes confetti-spectacular {
     0% {
-      transform: translate(0, 0) rotate(var(--initial-rotation, 0deg));
+      transform: translate(0, 0) rotate(var(--initial-rotation, 0deg)) scale(0.5);
       opacity: 1;
-      scale: 1;
     }
-    10% {
+    5% {
       opacity: 1;
-      scale: 1.1;
+      transform: translate(calc(var(--velocity-x, 0) * 0.1), calc(var(--velocity-y, 0) * 0.1)) 
+                 rotate(calc(var(--initial-rotation, 0deg) + var(--rotation-speed, 0) * 18deg)) scale(1.2);
     }
-    90% {
-      opacity: 0.8;
-      scale: 0.9;
+    15% {
+      opacity: 1;
+      transform: translate(calc(var(--velocity-x, 0) * 0.5), calc(var(--velocity-y, 0) * 0.5)) 
+                 rotate(calc(var(--initial-rotation, 0deg) + var(--rotation-speed, 0) * 54deg)) scale(1.1);
+    }
+    85% {
+      opacity: 0.9;
+      transform: translate(calc(var(--velocity-x, 0) * 8), calc(var(--velocity-y, 0) * 8 + 80vh)) 
+                 rotate(calc(var(--initial-rotation, 0deg) + var(--rotation-speed, 0) * 306deg)) scale(0.8);
     }
     100% {
-      transform: translate(calc(var(--velocity-x, 0) * 150px), calc(var(--velocity-y, 0) * 150px + 120vh)) 
-                 rotate(calc(var(--initial-rotation, 0deg) + var(--rotation-speed, 0) * 360deg));
+      transform: translate(calc(var(--velocity-x, 0) * 10), calc(var(--velocity-y, 0) * 10 + 100vh)) 
+                 rotate(calc(var(--initial-rotation, 0deg) + var(--rotation-speed, 0) * 360deg)) scale(0.3);
       opacity: 0;
-      scale: 0.5;
     }
   }
   
-  .animate-confetti-fall-enhanced {
+  .animate-confetti-spectacular {
     position: absolute;
-    animation: confetti-fall-enhanced ease-out forwards;
+    animation: confetti-spectacular cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     pointer-events: none;
-    z-index: 1000;
-    will-change: transform, opacity, scale;
+    z-index: 9999;
+    will-change: transform, opacity;
   }
   
   .animate-shimmer {

@@ -21,7 +21,7 @@ const Confetti: React.FC<ConfettiProps> = ({ originElement }) => {
   }>>([]);
 
   useEffect(() => {
-    // Metallic colors for luxury feel
+    // Metallic and vibrant colors for luxury feel
     const colors = [
       '#FFD700', // Gold
       '#C0C0C0', // Silver
@@ -45,62 +45,71 @@ const Confetti: React.FC<ConfettiProps> = ({ originElement }) => {
     
     const shapes = ['circle', 'square', 'triangle', 'diamond', 'star'];
     
-    // Get origin position from the card or use center of screen
+    // Get origin position from the card or use center of viewport
     let originX = window.innerWidth / 2;
     let originY = window.innerHeight / 2;
     
     if (originElement) {
       const rect = originElement.getBoundingClientRect();
-      originX = rect.left + rect.width / 2;
-      originY = rect.top + rect.height / 2;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+      
+      // Calculate absolute position including scroll
+      originX = rect.left + scrollLeft + rect.width / 2;
+      originY = rect.top + scrollTop + rect.height / 2;
+      
+      console.log('Origin calculated:', { originX, originY, rect, scrollTop, scrollLeft });
+    } else {
+      console.log('No origin element, using viewport center:', { originX, originY });
     }
     
-    // Create multiple waves of particles for better effect
+    // Create multiple waves of particles for spectacular effect
     const createParticleWave = (waveIndex: number, particleCount: number) => {
       return Array.from({ length: particleCount }, (_, i) => {
-        // Create full 360-degree spread with bias towards upward direction
-        const baseAngle = (Math.PI * 2 * i) / particleCount;
-        const angleVariation = (Math.random() - 0.5) * 0.5; // Add some randomness
-        const angle = baseAngle + angleVariation;
+        // Create full 360-degree spread
+        const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.8;
         
-        // Vary velocity based on wave and particle
-        const baseVelocity = 3 + Math.random() * 6; // Increased base velocity
-        const velocity = baseVelocity * (1 + waveIndex * 0.3); // Later waves go further
+        // Vary velocity significantly for better spread
+        const baseVelocity = 8 + Math.random() * 12; // Increased base velocity
+        const velocity = baseVelocity * (1 + waveIndex * 0.4); // Later waves go much further
         
-        // Add upward bias for more natural confetti effect
-        const upwardBias = Math.random() * 2;
+        // Calculate velocity components
+        const velocityX = Math.cos(angle) * velocity;
+        const velocityY = Math.sin(angle) * velocity - (Math.random() * 3); // Upward bias
         
         return {
           id: waveIndex * 1000 + i,
-          startX: originX + (Math.random() - 0.5) * 40, // Small random offset from center
-          startY: originY + (Math.random() - 0.5) * 40,
-          velocityX: Math.cos(angle) * velocity,
-          velocityY: Math.sin(angle) * velocity - upwardBias, // Upward bias
+          startX: originX + (Math.random() - 0.5) * 60, // Larger random offset
+          startY: originY + (Math.random() - 0.5) * 60,
+          velocityX,
+          velocityY,
           color: colors[Math.floor(Math.random() * colors.length)],
-          size: Math.random() * 12 + 6, // Larger particles
+          size: Math.random() * 16 + 8, // Larger particles (8-24px)
           shape: shapes[Math.floor(Math.random() * shapes.length)],
-          delay: waveIndex * 0.2 + Math.random() * 0.3, // Staggered waves
+          delay: waveIndex * 0.15 + Math.random() * 0.2, // Faster staggered waves
           rotation: Math.random() * 360,
-          rotationSpeed: (Math.random() - 0.5) * 15, // Faster rotation
-          duration: 6 + Math.random() * 3 // Longer duration
+          rotationSpeed: (Math.random() - 0.5) * 20, // Faster rotation
+          duration: 8 + Math.random() * 4 // Longer duration (8-12 seconds)
         };
       });
     };
     
-    // Create multiple waves of particles
+    // Create multiple waves with more particles
     const allParticles = [
-      ...createParticleWave(0, 40), // First wave - 40 particles
-      ...createParticleWave(1, 35), // Second wave - 35 particles
-      ...createParticleWave(2, 30), // Third wave - 30 particles
-      ...createParticleWave(3, 25)  // Fourth wave - 25 particles
+      ...createParticleWave(0, 50), // First wave - 50 particles
+      ...createParticleWave(1, 45), // Second wave - 45 particles
+      ...createParticleWave(2, 40), // Third wave - 40 particles
+      ...createParticleWave(3, 35), // Fourth wave - 35 particles
+      ...createParticleWave(4, 30)  // Fifth wave - 30 particles
     ];
     
+    console.log('Created particles:', allParticles.length);
     setParticles(allParticles);
 
     // Clean up particles after animation
     const timer = setTimeout(() => {
       setParticles([]);
-    }, 10000); // Longer cleanup time
+    }, 15000); // Longer cleanup time
 
     return () => clearTimeout(timer);
   }, [originElement]);
@@ -120,7 +129,7 @@ const Confetti: React.FC<ConfettiProps> = ({ originElement }) => {
       case 'square':
         return {
           ...baseStyles,
-          borderRadius: '2px',
+          borderRadius: '3px',
         };
       case 'triangle':
         return {
@@ -143,11 +152,11 @@ const Confetti: React.FC<ConfettiProps> = ({ originElement }) => {
   };
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 9999 }}>
       {particles.map((particle) => (
         <div
           key={particle.id}
-          className="absolute animate-confetti-fall-enhanced"
+          className="absolute animate-confetti-spectacular"
           style={{
             left: `${particle.startX}px`,
             top: `${particle.startY}px`,
@@ -155,13 +164,14 @@ const Confetti: React.FC<ConfettiProps> = ({ originElement }) => {
             ...getShapeStyles(particle.shape, particle.size),
             animationDelay: `${particle.delay}s`,
             animationDuration: `${particle.duration}s`,
-            '--velocity-x': particle.velocityX,
-            '--velocity-y': particle.velocityY,
-            '--rotation-speed': particle.rotationSpeed,
-            '--initial-rotation': particle.rotation,
-            boxShadow: `0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.4)`,
-            border: '1px solid rgba(255,255,255,0.3)',
-            filter: 'brightness(1.1) saturate(1.2)',
+            '--velocity-x': `${particle.velocityX}px`,
+            '--velocity-y': `${particle.velocityY}px`,
+            '--rotation-speed': `${particle.rotationSpeed}deg`,
+            '--initial-rotation': `${particle.rotation}deg`,
+            boxShadow: `0 4px 12px rgba(0,0,0,0.4), inset 0 2px 0 rgba(255,255,255,0.5)`,
+            border: '2px solid rgba(255,255,255,0.4)',
+            filter: 'brightness(1.2) saturate(1.3)',
+            transform: `rotate(${particle.rotation}deg)`,
           } as React.CSSProperties}
         />
       ))}
