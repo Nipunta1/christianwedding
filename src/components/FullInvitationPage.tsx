@@ -68,36 +68,29 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
   const handleAcceptInvitation = () => {
     setIsAccepted(true);
     
-    // Wait for the card to render and get proper positioning with multiple attempts
+    // Show confetti immediately and find the card
+    setShowConfetti(true);
+    
     setTimeout(() => {
       const thankYouCard = document.querySelector('[data-thank-you-card]') as HTMLElement;
       if (thankYouCard) {
-        console.log('Thank you card found:', thankYouCard.getBoundingClientRect());
         setThankYouCardRef(thankYouCard);
-        setShowConfetti(true);
-        
-        // Hide confetti after extended duration
-        setTimeout(() => {
-          setShowConfetti(false);
-          setThankYouCardRef(null);
-        }, 12000); // Extended to 12 seconds
       } else {
-        console.log('Thank you card not found, retrying...');
         // Retry if card not found
         setTimeout(() => {
           const retryCard = document.querySelector('[data-thank-you-card]') as HTMLElement;
           if (retryCard) {
-            console.log('Thank you card found on retry:', retryCard.getBoundingClientRect());
             setThankYouCardRef(retryCard);
-            setShowConfetti(true);
-            setTimeout(() => {
-              setShowConfetti(false);
-              setThankYouCardRef(null);
-            }, 12000);
           }
         }, 200);
       }
-    }, 500); // Increased delay to ensure card is fully rendered
+    }, 100);
+    
+    // Hide confetti after duration
+    setTimeout(() => {
+      setShowConfetti(false);
+      setThankYouCardRef(null);
+    }, 8000);
   };
 
   const openDirections = (venue: string) => {
