@@ -68,18 +68,20 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
   const handleAcceptInvitation = () => {
     setIsAccepted(true);
     
-    // Wait a moment for the card to render, then trigger confetti
+    // Wait for the card to render and get proper positioning
     setTimeout(() => {
       const thankYouCard = document.querySelector('[data-thank-you-card]') as HTMLElement;
-      setThankYouCardRef(thankYouCard);
-      setShowConfetti(true);
-      
-      // Hide confetti after 5 seconds
-      setTimeout(() => {
-        setShowConfetti(false);
-        setThankYouCardRef(null);
-      }, 5000);
-    }, 100);
+      if (thankYouCard) {
+        setThankYouCardRef(thankYouCard);
+        setShowConfetti(true);
+        
+        // Hide confetti after longer duration
+        setTimeout(() => {
+          setShowConfetti(false);
+          setThankYouCardRef(null);
+        }, 10000); // Extended to 10 seconds
+      }
+    }, 300); // Increased delay to ensure card is fully rendered
   };
 
   const openDirections = (venue: string) => {

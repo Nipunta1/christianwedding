@@ -109,23 +109,34 @@
   }
   
   /* Luxury Confetti Animation */
-  @keyframes confetti-fall-luxury {
+  @keyframes confetti-fall-enhanced {
     0% {
       transform: translate(0, 0) rotate(var(--initial-rotation, 0deg));
       opacity: 1;
+      scale: 1;
+    }
+    10% {
+      opacity: 1;
+      scale: 1.1;
+    }
+    90% {
+      opacity: 0.8;
+      scale: 0.9;
     }
     100% {
-      transform: translate(calc(var(--velocity-x, 0) * 100px), calc(var(--velocity-y, 0) * 100px + 100vh)) 
+      transform: translate(calc(var(--velocity-x, 0) * 150px), calc(var(--velocity-y, 0) * 150px + 120vh)) 
                  rotate(calc(var(--initial-rotation, 0deg) + var(--rotation-speed, 0) * 360deg));
       opacity: 0;
+      scale: 0.5;
     }
   }
   
-  .confetti-particle-luxury {
+  .animate-confetti-fall-enhanced {
     position: absolute;
-    animation: confetti-fall-luxury 4s ease-out forwards;
+    animation: confetti-fall-enhanced ease-out forwards;
     pointer-events: none;
     z-index: 1000;
+    will-change: transform, opacity, scale;
   }
   
   .animate-shimmer {
