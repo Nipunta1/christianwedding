@@ -327,6 +327,9 @@ const FullInvitationPage: React.FC<FullInvitationPageProps> = ({ onBack }) => {
           {/* Local Attractions Section */}
           <LocalAttractions />
 
+          {/* Meet Our Families Section */}
+          <MeetFamiliesSection />
+
           {/* Photo Carousel */}
           <PhotoCarousel />
 
