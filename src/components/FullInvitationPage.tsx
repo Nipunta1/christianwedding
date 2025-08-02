@@ -22,6 +22,7 @@ import {
 import PhotoCarousel from './PhotoCarousel';
 import WishesSection from './WishesSection';
 import LocalAttractions from './LocalAttractions';
+import MeetFamiliesSection from './MeetFamiliesSection';
 import Confetti from './Confetti';
 
 interface FullInvitationPageProps {
